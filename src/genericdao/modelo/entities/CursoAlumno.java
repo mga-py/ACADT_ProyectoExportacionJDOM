@@ -1,6 +1,10 @@
 package genericdao.modelo.entities;
 
-
+/**
+ * Esta clase la funcion que tiene es relacionar 
+ * el id del curso con el id del alumno
+ * @author Baltasar Rangel Pinilla  <mga-py>----<baltasarrangel93@gmail.com">
+ */
 public class CursoAlumno {
 
     private int idCurso;

@@ -2,7 +2,10 @@ package genericdao.modelo.entities;
 
 import java.util.List;
 
-
+/**
+ * Esta es la clase alumno con sus atributos correspondientes
+ * @author Baltasar Rangel Pinilla  <mga-py>----<baltasarrangel93@gmail.com">
+ */
 public class Alumno {
     private Integer id;
     private int matricula;

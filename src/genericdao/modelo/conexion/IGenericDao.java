@@ -1,10 +1,15 @@
 
-package genericdao.modelo.dao;
+package genericdao.modelo.conexion;
 
 import java.io.Serializable;
 import java.util.List;
 
-
+/**
+ * Implementa estos metodos basicos para la creacion de un dao
+ * @author Baltasar Rangel Pinilla  <mga-py>----<baltasarrangel93@gmail.com">
+ * @param <T>(Objeto)entity
+ * @param <PK> (Primary key)id
+ */
 public interface IGenericDao<T, PK extends Serializable> {
     T get(PK id);
     T get(T entity);

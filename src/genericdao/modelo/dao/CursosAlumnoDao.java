@@ -1,5 +1,6 @@
 package genericdao.modelo.dao;
 
+import genericdao.modelo.conexion.GenericDao;
 import genericdao.modelo.entities.Alumno;
 import genericdao.modelo.entities.Curso;
 import genericdao.modelo.entities.CursoAlumno;

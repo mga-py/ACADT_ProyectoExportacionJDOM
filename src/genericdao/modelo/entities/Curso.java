@@ -2,6 +2,10 @@ package genericdao.modelo.entities;
 
 import java.util.List;
 
+/**
+ * Esta seria la clase curso con sus atributos correspondientes
+ * @author Baltasar Rangel Pinilla  <mga-py>----<baltasarrangel93@gmail.com">
+ */
 public class Curso {
 
     private Integer id;

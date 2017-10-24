@@ -1,5 +1,6 @@
 package genericdao.modelo.dao;
 
+import genericdao.modelo.conexion.GenericDao;
 import genericdao.modelo.entities.Alumno;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,7 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 
+ * @author Baltasar Rangel Pinilla  <mga-py>----<baltasarrangel93@gmail.com">
+ */
 public class AlumnosDao extends GenericDao<Alumno, Integer> {
 
     private int matriculaAnterior;

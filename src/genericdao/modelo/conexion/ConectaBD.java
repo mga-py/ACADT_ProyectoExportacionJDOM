@@ -1,4 +1,4 @@
-package genericdao.modelo.dao;
+package genericdao.modelo.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,14 +12,39 @@ public class ConectaBD {
 
     private static ConectaBD conectaBD;
 
+    //Version de la base de datos
     final int DB_VERSION = 1;
     final String DB_DESCRIPCION_VERSION = "Creación inicial";
+    //Nombre de la base de datos
     final String DB_NOMBRE = "academia.db";
+    //Conexion privada porque solo pertenece a esta clase
     private Connection connection;
+    //Controla si se produce error y devuelve true en tal caso
     private boolean error;
     private Statement stmtUpdate;
     private Statement stmtResultSet;
+    
+    
+    
+    /**
+     * Se crea la base de datos si no esta creada y si no obtiene la que ya esta
+     * creada
+     * @return (ConectaBD)devuelve esta clase en caso de que ya este creada 
+     * @throws ExceptionDataBase 
+     */
+    public static ConectaBD getConectaBD() throws ExceptionDataBase {
+        if (conectaBD == null) {
+            conectaBD = new ConectaBD();
+        }
 
+        return conectaBD;
+    }
+
+    /**
+     * Se crea la base de datos el constructor es privado porque solo se 
+     * accede desde esta clase
+     * @throws ExceptionDataBase 
+     */
     private ConectaBD() throws ExceptionDataBase {
         error = false;
         try {
@@ -43,14 +68,12 @@ public class ConectaBD {
         }
     }
 
-    public static ConectaBD getConectaBD() throws ExceptionDataBase {
-        if (conectaBD == null) {
-            conectaBD = new ConectaBD();
-        }
+    
 
-        return conectaBD;
-    }
-
+    /**
+     * Metodo para obtener la conexion
+     * @return conexion(Connection)
+     */
     public Connection getConnection() {
         return connection;
     }
@@ -66,6 +89,10 @@ public class ConectaBD {
 
     }
 
+    /**
+     * Crea las tablas en la base de datos
+     * @throws SQLException 
+     */
     private void createTables() throws SQLException {
         error = false;
         String sql;
@@ -100,6 +127,10 @@ public class ConectaBD {
         addVersion();
     }
 
+    /**
+     * Inserta la version de la base de datos
+     * @throws SQLException 
+     */
     private void addVersion() throws SQLException {
         error = false;
         String sql = "INSERT INTO version "
@@ -114,6 +145,10 @@ public class ConectaBD {
         ps.executeUpdate();
     }
 
+    /**
+     * Devuelve las versiones antiguas de la base de datos
+     * @return (Integer) versioines antiguas DB
+     */
     private Integer lastVersion() {
         error = false;
         int version = 0;
@@ -132,6 +167,10 @@ public class ConectaBD {
         return version;
     }
 
+    /**
+     * Devuelve si es error o no
+     * @return (Boolean)
+     */
     public boolean isError() {
         return error;
     }

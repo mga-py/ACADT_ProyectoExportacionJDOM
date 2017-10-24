@@ -1,5 +1,6 @@
 package genericdao.modelo.dao;
 
+import genericdao.modelo.conexion.GenericDao;
 import genericdao.modelo.entities.Curso;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
