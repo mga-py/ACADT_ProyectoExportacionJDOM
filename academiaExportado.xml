@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<academia>
+  <Alumnos />
+  <cursos>
+    <curso id="i">
+      <codCurso>333</codCurso>
+      <descripcion>mates</descripcion>
+      <lista>ninguna</lista>
+    </curso>
+  </cursos>
+</academia>

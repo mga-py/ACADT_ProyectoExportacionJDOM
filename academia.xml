@@ -1,0 +1,19 @@
+<academia>
+  <tabla nombre="alumnos">
+    <Alumno>
+      <id>500</id>
+      <matricula>500</matricula>
+      <nombre>Jesus</nombre>
+      <apellido1>gonzalez</apellido1>
+      <apellido2>merin</apellido2>
+    </Alumno>
+    <Alumno>
+      <id>600</id>
+      <matricula>600</matricula>
+      <nombre>luisma</nombre>
+      <apellido1>pere</apellido1>
+      <apellido2>becerra</apellido2>
+    </Alumno>
+  </tabla>
+ 
+</academia>
