@@ -16,7 +16,7 @@ public class ConectaBD {
     final int DB_VERSION = 1;
     final String DB_DESCRIPCION_VERSION = "Creación inicial";
     //Nombre de la base de datos
-    final String DB_NOMBRE = "prueba.db";
+    final String DB_NOMBRE = "sahakah.db";
     //Conexion privada porque solo pertenece a esta clase
     private Connection connection;
     //Controla si se produce error y devuelve true en tal caso
