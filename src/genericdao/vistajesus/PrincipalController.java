@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genericdao.vista.jesus;
+package genericdao.vistajesus;
 
+import acadt_proyectoexportjdom.ACADT_ProyectoExportJDOM;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,8 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import pkg002academia.IControlPantallas;
-import pkg002academia.Main;
 
 /**
  *
@@ -23,7 +22,7 @@ import pkg002academia.Main;
 public class PrincipalController implements Initializable, IControlPantallas {
 
     //Atributos
-    private Main menuVentanas;
+    private ACADT_ProyectoExportJDOM menuVentanas;
 
     @FXML
     private Menu mAcerca;
@@ -45,29 +44,29 @@ public class PrincipalController implements Initializable, IControlPantallas {
     }
 
     @Override
-    public void setMainApp(Main mainApp) {
+    public void setMainApp(ACADT_ProyectoExportJDOM mainApp) {
         menuVentanas = mainApp;
 
     }
 
     @FXML
     private void add(ActionEvent event) {
-        menuVentanas.cambiarContenido("interfaz/Add.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vistajesus/Add.fxml");
     }
 
     @FXML
     private void delete(ActionEvent event) {
-        menuVentanas.cambiarContenido("interfaz/Delete.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vistajesus/Delete.fxml");
     }
 
     @FXML
     private void update(ActionEvent event) {
-        menuVentanas.cambiarContenido("interfaz/Update.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vistajesus/Update.fxml");
     }
 
     @FXML
     private void list(ActionEvent event) {
-        menuVentanas.cambiarContenido("interfaz/List.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vistajesus/List.fxml");
     }
 
     @FXML
@@ -78,5 +77,7 @@ public class PrincipalController implements Initializable, IControlPantallas {
         alertaAutor.setContentText("Aplicación JDOM");
         alertaAutor.showAndWait();
     }
+
+
 
 }

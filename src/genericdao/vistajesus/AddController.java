@@ -1,5 +1,10 @@
-package genericdao.vista.jesus;
+package genericdao.vistajesus;
 
+import acadt_proyectoexportjdom.ACADT_ProyectoExportJDOM;
+import genericdao.modelo.dao.AlumnosDao;
+import genericdao.modelo.dao.CursosDao;
+import genericdao.modelo.entities.Alumno;
+import genericdao.modelo.entities.Curso;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -8,12 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import pkg002academia.IControlPantallas;
-import pkg002academia.Main;
-import pkg002academia.modelo.dao.AlumnoDao;
-import pkg002academia.modelo.dao.CursoDao;
-import pkg002academia.modelo.entities.Alumno;
-import pkg002academia.modelo.entities.Curso;
 
 /**
  *
@@ -22,9 +21,9 @@ import pkg002academia.modelo.entities.Curso;
 public class AddController implements Initializable, IControlPantallas {
 
     //Atributos
-    private Main menuVentanas;
-    private AlumnoDao alumnoDao;
-    private CursoDao cursoDao;
+    private ACADT_ProyectoExportJDOM menuVentanas;
+    private AlumnosDao alumnoDao;
+    private CursosDao cursoDao;
 
     @FXML
     private TextField tfMatricula;
@@ -53,14 +52,14 @@ public class AddController implements Initializable, IControlPantallas {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        alumnoDao = new AlumnoDao();
-        cursoDao = new CursoDao();
+        alumnoDao = new AlumnosDao();
+        cursoDao = new CursosDao();
         System.out.println("Menú añadir cargado.");
 
     }
 
     @Override
-    public void setMainApp(Main mainApp) {
+    public void setMainApp(ACADT_ProyectoExportJDOM mainApp) {
         menuVentanas = mainApp;
     }
 
@@ -69,9 +68,9 @@ public class AddController implements Initializable, IControlPantallas {
         Alumno alumno = new Alumno();
         alumno.setMatricula(Integer.parseInt(tfMatricula.getText()));
         alumno.setNombre(tfNombre.getText());
-        alumno.setApellido01(tfApellido01.getText());
-        alumno.setApellido02(tfApellido02.getText());
-        alumno.setIdCurso(Integer.parseInt(tfCurso.getText()));
+        alumno.setApellido1(tfApellido01.getText());
+        alumno.setApellido2(tfApellido02.getText());
+        //alumno.setIdCurso(Integer.parseInt(tfCurso.getText()));
         alumnoDao.add(alumno);
     }
 
@@ -86,7 +85,7 @@ public class AddController implements Initializable, IControlPantallas {
 
     @FXML
     private void back(ActionEvent event) {
-        menuVentanas.cambiarContenido("interfaz/List.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vistajesus/List.fxml");
 
     }
 

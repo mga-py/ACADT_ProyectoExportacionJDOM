@@ -1,10 +1,10 @@
-package genericdao.vista.jesus;
+package genericdao.vistajesus;
 
+import acadt_proyectoexportjdom.ACADT_ProyectoExportJDOM;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import pkg002academia.IControlPantallas;
-import pkg002academia.Main;
+
 
 /**
  * FXML Controller class
@@ -14,7 +14,7 @@ import pkg002academia.Main;
 public class PortadaController implements Initializable, IControlPantallas {
 
     //Atributos
-    private Main menuVentanas;
+    private ACADT_ProyectoExportJDOM menuVentanas;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -22,7 +22,7 @@ public class PortadaController implements Initializable, IControlPantallas {
     }
 
     @Override
-    public void setMainApp(Main mainApp) {
+    public void setMainApp(ACADT_ProyectoExportJDOM mainApp) {
         menuVentanas = mainApp;
     }
 
