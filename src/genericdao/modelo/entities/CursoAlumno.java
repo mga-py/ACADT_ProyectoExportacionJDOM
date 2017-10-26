@@ -39,5 +39,9 @@ public class CursoAlumno {
         return "CursoAlumno{" + "idCurso=" + idCurso + ", idAlumno=" + idAlumno + '}';
     }
 
+
+
+    
+
     
 }

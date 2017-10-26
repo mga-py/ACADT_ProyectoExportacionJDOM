@@ -6,7 +6,11 @@
 package genericdao.modelo.exportacionJDOM;
 
 import genericdao.modelo.dao.AlumnosDao;
+import genericdao.modelo.dao.CursosAlumnoDao;
+import genericdao.modelo.dao.CursosDao;
 import genericdao.modelo.entities.Alumno;
+import genericdao.modelo.entities.Curso;
+import genericdao.modelo.entities.CursoAlumno;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -97,7 +101,13 @@ public class JDOM {
     public void exportarXml() {
         AlumnosDao alumnosDao = new AlumnosDao();
         List<Alumno> listaAlumnos=alumnosDao.listAll();
+        CursosDao cursosDao = new CursosDao();
+        List<Curso> listaCursos=cursosDao.listAll();
+        CursosAlumnoDao cursosAlumnosDao = new CursosAlumnoDao();
+        List<CursoAlumno> listaCursosAlumnos = cursosAlumnosDao.listAll();
         System.out.println(listaAlumnos);
+        System.out.println(listaCursos);
+        System.out.println(listaCursosAlumnos);
         
 
         try {
@@ -117,23 +127,58 @@ public class JDOM {
             alumno.addContent(new Element("nombre").setText(listaAlumnos.get(i).getNombre()));
             alumno.addContent(new Element("apellido1").setText(listaAlumnos.get(i).getApellido1()));
             alumno.addContent(new Element("apellido2").setText(listaAlumnos.get(i).getApellido2()));
-            alumno.addContent(new Element("listacursos").setText(String.valueOf(listaAlumnos.get(i).getCursos())));
-
             
+//                for (int j = 0; j < listaAlumnos.get(i).getCursos().size(); j++) {
+//                     alumno.addContent(new Element("listacursos").setText(String.valueOf(listaAlumnos.get(i).getCursos().get(j).getId())));
+//                }
+           
             }
             //Esta es la parte donde se añade(sacarlo del bucle)
             doc.getRootElement().addContent(alumnos);
-
-            Element cursos = new Element("cursos");
-            Element curso = new Element("curso");
-            Attribute idCurso = new Attribute("id", "i");
+            
+            Element cursos = new Element("Cursos");
+            
+            for (int i = 0; i < listaCursos.size(); i++) {
+                Element curso = new Element("Curso");
+            Attribute idCurso = new Attribute("id", String.valueOf(listaCursos.get(i).getId()));
             cursos.addContent(curso);
             curso.setAttribute(idCurso);
-            curso.addContent(new Element("codCurso").setText("333"));
-            curso.addContent(new Element("descripcion").setText("mates"));
-            curso.addContent(new Element("lista").setText("ninguna"));
-
+            curso.addContent(new Element("codCurso").setText(String.valueOf(listaCursos.get(i).getCodCurso())));
+            curso.addContent(new Element("descripcion").setText(listaCursos.get(i).getDescripcion()));
+            
+            
+            }
+            
+            //Esta es la parte donde se añade(sacarlo del bucle)
             doc.getRootElement().addContent(cursos);
+            
+            
+            Element cursosAlumnos = new Element("CursosAlumnos");
+            
+            for (int i = 0; i < listaCursosAlumnos.size(); i++) {
+                Element cursoAlumno = new Element("cursoAlumno");
+           // Attribute idCursoAlumno = new Attribute("id", String.valueOf(listaCursosAlumnos.get(i).getId()));
+            cursosAlumnos.addContent(cursoAlumno);
+            //cursoAlumno.setAttribute(idCursoAlumno);
+            cursoAlumno.addContent(new Element("idCurso").setText(String.valueOf(listaCursosAlumnos.get(i).getIdCurso())));
+            cursoAlumno.addContent(new Element("idAlumno").setText(String.valueOf(listaCursosAlumnos.get(i).getIdAlumno())));
+            
+            
+            }
+            
+            //Esta es la parte donde se añade(sacarlo del bucle)
+            doc.getRootElement().addContent(cursosAlumnos);
+
+//            Element cursos = new Element("cursos");
+//            Element curso = new Element("curso");
+//            Attribute idCurso = new Attribute("id", "i");
+//            cursos.addContent(curso);
+//            curso.setAttribute(idCurso);
+//            curso.addContent(new Element("codCurso").setText("333"));
+//            curso.addContent(new Element("descripcion").setText("mates"));
+//            curso.addContent(new Element("lista").setText("ninguna"));
+//
+//            doc.getRootElement().addContent(cursos);
 
             // new XMLOutputter().output(doc, System.out);
             XMLOutputter xmlOutput = new XMLOutputter();

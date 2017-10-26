@@ -208,27 +208,61 @@ public class CursosDao extends GenericDao<Curso, Integer> {
 
     @Override
     public List<Curso> listAll() {
-        ArrayList<Curso> cursos = new ArrayList();
-        Curso curso;
+        
+        
         error = false;
-        String sql = "SELECT id, "
-                + "codCurso, descripcion "
-                + "FROM cursos ORDER BY codCurso ASC";
+        List<Curso> lista = new ArrayList<>();
+        String sql = "SELECT id, codCurso, descripcion FROM cursos ORDER BY codCurso ASC;";
+
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                curso = new Curso();
+                Curso curso=new Curso();
                 curso.setId(rs.getInt("id"));
                 curso.setCodCurso(rs.getString("codCurso"));
-                curso.setDescripcion(rs.getString("decripcion"));
-                cursos.add(curso);
+                curso.setDescripcion(rs.getString("descripcion"));
+ 
+                lista.add(curso);
             }
-            rs.close();
+            con.commit();
+
         } catch (SQLException ex) {
             error = true;
         }
-        return cursos;
+        System.out.println("Lista leida.");
+        return lista;
+        
+        
+        
+        
+        
+        
+        
+        
+//        ArrayList<Curso> cursos = new ArrayList();
+//        //Curso curso;
+//        error = false;
+//        String sql = "SELECT id, "
+//                + "codCurso, descripcion "
+//                + "FROM cursos ORDER BY codCurso ASC;";
+//        try {
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//            while (rs.next()) {
+//                Curso curso = new Curso();
+//                curso.setId(rs.getInt("id"));
+//                curso.setCodCurso(rs.getString("codCurso"));
+//                curso.setDescripcion(rs.getString("decripcion"));
+//                cursos.add(curso);
+//            }
+//            con.commit();
+//            //rs.close();
+//        } catch (SQLException ex) {
+//            error = true;
+//        }
+//        System.out.println(cursos);
+//        return cursos;
     }
 
     @Override
