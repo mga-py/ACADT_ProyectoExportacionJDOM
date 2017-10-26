@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="704.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="genericdao.vista.carlos.PortadaFXMLController">
+   <children>
+      <ImageView fitHeight="560.0" fitWidth="766.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../abstract-water-wave.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="419.0" fitWidth="837.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../LOGOCASTELAR.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
