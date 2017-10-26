@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="601.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg002academia.interfaz.ListController">
+   <children>
+      <TabPane layoutY="14.0" prefHeight="591.0" prefWidth="929.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Alumnos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tvAlumnos" layoutX="72.0" layoutY="63.0" prefHeight="436.0" prefWidth="786.0">
+                          <columns>
+                            <TableColumn fx:id="tcMatricula" prefWidth="78.0" text="matricula" />
+                            <TableColumn fx:id="tcNombre" prefWidth="199.0" text="nombre" />
+                              <TableColumn fx:id="tcApellido01" prefWidth="171.0" text="apellido01" />
+                              <TableColumn fx:id="tcApellido02" prefWidth="152.0" text="apellido02" />
+                              <TableColumn fx:id="tcCurso" minWidth="0.0" prefWidth="185.0" text="codCurso" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Cursos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tvCursos" layoutX="72.0" layoutY="63.0" prefHeight="436.0" prefWidth="786.0">
+                           <columns>
+                              <TableColumn fx:id="tcCodCurso" prefWidth="132.0" text="codCurso" />
+                              <TableColumn fx:id="tcDescripcion" prefWidth="653.0" text="descripcion" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

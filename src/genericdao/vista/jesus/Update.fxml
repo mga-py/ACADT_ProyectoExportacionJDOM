@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="601.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg002academia.interfaz.UpdateController">
+   <children>
+      <TabPane layoutY="14.0" prefHeight="591.0" prefWidth="921.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Alumno">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfMatricula" layoutX="99.0" layoutY="100.0" />
+                        <TextField fx:id="tfNombre" layoutX="99.0" layoutY="310.0" />
+                        <TextField fx:id="tfApellido01" layoutX="280.0" layoutY="310.0" />
+                        <TextField fx:id="tfApellido02" layoutX="457.0" layoutY="310.0" />
+                        <TextField fx:id="tfCurso" layoutX="99.0" layoutY="207.0" />
+                        <Label layoutX="99.0" layoutY="74.0" text="Matricula" />
+                        <Label layoutX="99.0" layoutY="286.0" text="Nombre" />
+                        <Label layoutX="280.0" layoutY="286.0" text="Apellido 01" />
+                        <Label layoutX="459.0" layoutY="286.0" text="Apellido 02" />
+                        <Label layoutX="101.0" layoutY="180.0" text="ID Curso" />
+                        <Button layoutX="617.0" layoutY="501.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="117.0" text="Atrás" />
+                        <Button layoutX="767.0" layoutY="501.0" mnemonicParsing="false" onAction="#updateAlumno" prefHeight="25.0" prefWidth="117.0" text="Actualizar" />
+                        <TextField layoutX="585.0" layoutY="62.0" promptText="filtro" />
+                        <Button layoutX="767.0" layoutY="62.0" mnemonicParsing="false" onAction="#find" text="Buscar" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Curso">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfCodigoCurso" layoutX="52.0" layoutY="119.0" />
+                        <TextField fx:id="tfDescripcionCurso" layoutX="56.0" layoutY="230.0" prefHeight="173.0" prefWidth="557.0" />
+                        <Label layoutX="52.0" layoutY="88.0" text="Código curso" />
+                        <Label layoutX="56.0" layoutY="187.0" text="Descripción" />
+                        <Button layoutX="617.0" layoutY="501.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="117.0" text="Atrás" />
+                        <Button layoutX="767.0" layoutY="501.0" mnemonicParsing="false" onAction="#updateCourse" prefHeight="25.0" prefWidth="117.0" text="Actualizar" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
