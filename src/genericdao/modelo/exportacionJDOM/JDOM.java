@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package genericdao.modelo.exportacionJDOM;
 
 import genericdao.modelo.dao.AlumnosDao;
@@ -26,166 +21,221 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-/**
- *
- * @author Baltasar Rangel Pinilla  <mga-py>----<baltasarrangel93@gmail.com">
- */
 public class JDOM {
-//    SAXBuilder builder =new SAXBuilder();
-//    Document doc = builder.build(new File("fichero.xml"));
-//    
-//    Element root =doc.getRootChildren();
-//    
-//    List<Element> allChildren =root.getChildren("noticia")
-//    
-//    
-//    
 
-    public void importarXml() {
+    public List<ArrayList> importarXml(String path) {
+        List<ArrayList> listaArrays = new ArrayList<>();
+
+        //Creamos las listas en donde vamos a importar los datos
+        //para pasarselas al metodo que las pida
+        ArrayList<Curso> ListaCompletaCursos = new ArrayList();
+        ArrayList<Alumno> listaCompletaAlumnos = new ArrayList();
+        ArrayList<CursoAlumno> ListaCompletaCursosAlumnos = new ArrayList();
+
         //Se crea un SAXBuilder para poder parsear el archivo
         SAXBuilder builder = new SAXBuilder();
-        File xmlFile = new File("academia.xml");
+        File xmlFile = new File(path);
         try {
             //Se crea el documento a traves del archivo
             Document document = (Document) builder.build(xmlFile);
 
-            //Se obtiene la raiz 'tables'
+            //---------------------ALUMNOS-------------------
+            //Se obtiene la raiz 'academia'
             Element rootNode = document.getRootElement();
 
-            //Se obtiene la lista de hijos de la raiz 'tables'
-            List list = rootNode.getChildren("tabla");
+            //Se obtiene la lista de hijos de la raiz 'academia'
+            List listaAlumnos = rootNode.getChildren("Alumnos");
 
-            //Se recorre la lista de hijos de 'tables'
-            for (int i = 0; i < list.size(); i++) {
-                //Se obtiene el elemento 'tabla'
-                Element tabla = (Element) list.get(i);
+            //Se recorre la lista de hijos de 'Alumnos'
+            for (int i = 0; i < listaAlumnos.size(); i++) {
+                //Se obtiene el elemento 'alumnos'
+                Element alumnos = (Element) listaAlumnos.get(i);
 
-                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
-                String nombreTabla = tabla.getAttributeValue("nombre");
-
-                System.out.println("Tabla: " + nombreTabla);
-
-                //Se obtiene la lista de hijos del tag 'tabla'
-                List lista_campos = tabla.getChildren();
-
-                System.out.println("\tNombre\t\tTipo\t\tValor");
+                //Se obtiene la lista de hijos del tag 'alumnos'
+                List lista_campos = alumnos.getChildren();
 
                 //Se recorre la lista de campos
                 for (int j = 0; j < lista_campos.size(); j++) {
-                    //Se obtiene el elemento 'campo'
+                    //Se obtiene el elemento 'alumno'
                     Element campo = (Element) lista_campos.get(j);
 
-                    //Se obtienen los valores que estan entre los tags '<campo></campo>'
+                    //Se obtienen los valores que estan entre los tags '<alumno></alumno>'
                     //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
-                    Integer id = Integer.parseInt(campo.getChildTextTrim("id"));
+                    Integer id = Integer.parseInt(campo.getAttributeValue("id"));
                     Integer matricula = Integer.parseInt(campo.getChildTextTrim("matricula"));
                     String nombre = campo.getChildTextTrim("nombre");
                     String apellido1 = campo.getChildTextTrim("apellido1");
                     String apellido2 = campo.getChildTextTrim("apellido2");
 
-                    //System.out.println("\t" + id + "\t\t" + matricula + "\t\t" + nombre+ "\t\t" + apellido1+ "\t\t" + apellido2);
-                    System.out.println(id);
-                    System.out.println(matricula);
-                    System.out.println(nombre);
-                    System.out.println(apellido1);
-                    System.out.println(apellido2);
+                    Alumno alumnoTemp = new Alumno();
+                    alumnoTemp.setId(id);
+                    alumnoTemp.setMatricula(matricula);
+                    alumnoTemp.setNombre(nombre);
+                    alumnoTemp.setApellido1(apellido1);
+                    alumnoTemp.setApellido2(apellido2);
+
+                    listaCompletaAlumnos.add(alumnoTemp);
                 }
+
             }
+            //------------------Cursos------------------
+
+            //Se obtiene la raiz 'academia'
+            //Se obtiene la lista de hijos de la raiz 'academia'
+            List listaCursos = rootNode.getChildren("Cursos");
+
+            //Se recorre la lista de hijos de 'Cursos'
+            for (int i = 0; i < listaCursos.size(); i++) {
+                //Se obtiene el elemento 'Cursos'
+                Element cursos = (Element) listaCursos.get(i);
+
+                //Se obtiene la lista de hijos del tag 'Cursos'
+                List lista_camposCursos = cursos.getChildren();
+
+                //Se recorre la lista de cursos
+                for (int j = 0; j < lista_camposCursos.size(); j++) {
+
+                    //Se obtiene el elemento 'Curso'
+                    Element campo = (Element) lista_camposCursos.get(j);
+
+                    //Se obtienen los valores que estan entre los tags '<curso></curso>'
+                    //Se obtiene el valor que esta entre los tags '<descripcion></descripcion>'
+                    Integer id = Integer.parseInt(campo.getAttributeValue("id"));
+                    String codCurso = campo.getChildTextTrim("codCurso");
+                    String descripcion = campo.getChildTextTrim("descripcion");
+
+                    Curso cursoTemp = new Curso();
+                    cursoTemp.setId(id);
+                    cursoTemp.setCodCurso(codCurso);
+                    cursoTemp.setDescripcion(descripcion);
+
+                    ListaCompletaCursos.add(cursoTemp);
+
+                }
+
+            }
+
+            //------------------CursosAlumnos------------------
+            //Se obtiene la raiz 'academia'
+            //Se obtiene la lista de hijos de la raiz 'academia'
+            List listaCursosAlumnos = rootNode.getChildren("CursosAlumnos");
+
+            //Se recorre la lista de hijos de 'CursosAlumnos'
+            for (int i = 0; i < listaCursosAlumnos.size(); i++) {
+                //Se obtiene el elemento 'cursoAlumno'
+                Element cursoAlumno = (Element) listaCursosAlumnos.get(i);
+
+                //Se obtiene la lista de hijos del tag 'CursosAlumnos'
+                List lista_camposCursosAlumnos = cursoAlumno.getChildren();
+
+                //Se recorre la lista de campos
+                for (int j = 0; j < lista_camposCursosAlumnos.size(); j++) {
+
+                    //Se obtiene el elemento 'cursoAlumno'
+                    Element campo = (Element) lista_camposCursosAlumnos.get(j);
+
+                    //Se obtienen los valores que estan entre los tags '<cursoAlumno></cursoAlumno>'
+                    //Se obtiene el valor que esta entre los tags '<idCurso></idCurso>'
+                    String idCurso = campo.getChildTextTrim("idCurso");
+                    String idAlumno = campo.getChildTextTrim("idAlumno");
+
+                    CursoAlumno cursoAlumnoTemp = new CursoAlumno();
+                    cursoAlumnoTemp.setIdAlumno(Integer.parseInt(idAlumno));
+                    cursoAlumnoTemp.setIdCurso(Integer.parseInt(idCurso));
+                    ListaCompletaCursosAlumnos.add(cursoAlumnoTemp);
+
+                }
+
+            }
+
         } catch (IOException io) {
             System.out.println(io.getMessage());
         } catch (JDOMException jdomex) {
             System.out.println(jdomex.getMessage());
         }
+
+        listaArrays.add(ListaCompletaCursos);//get(0)
+        listaArrays.add(ListaCompletaCursosAlumnos);//get(1)
+        listaArrays.add(listaCompletaAlumnos);//get(2)
+
+        return listaArrays;
     }
 
-    public void exportarXml() {
+    public void exportarXml(String path) {
         AlumnosDao alumnosDao = new AlumnosDao();
-        List<Alumno> listaAlumnos=alumnosDao.listAll();
+        List<Alumno> listaAlumnos = alumnosDao.listAll();
         CursosDao cursosDao = new CursosDao();
-        List<Curso> listaCursos=cursosDao.listAll();
+        List<Curso> listaCursos = cursosDao.listAll();
         CursosAlumnoDao cursosAlumnosDao = new CursosAlumnoDao();
         List<CursoAlumno> listaCursosAlumnos = cursosAlumnosDao.listAll();
-        System.out.println(listaAlumnos);
-        System.out.println(listaCursos);
-        System.out.println(listaCursosAlumnos);
-        
 
         try {
 
+            //Creamos el elemento 'academia'
             Element academia = new Element("academia");
             Document doc = new Document(academia);
 
             //doc.setRootElement(academia);
+//---------------------------ALUMNOS--------------------------
+            //Creamos el elemento Alumnos
             Element alumnos = new Element("Alumnos");
-            
+
+            //Recorremos la lista de alumnos y recogemos su atributo
             for (int i = 0; i < listaAlumnos.size(); i++) {
+                //Creamos el elemento alumno
                 Element alumno = new Element("Alumno");
-            Attribute idalumno = new Attribute("id", String.valueOf(listaAlumnos.get(i).getId()));
-            alumnos.addContent(alumno);
-            alumno.setAttribute(idalumno);
-            alumno.addContent(new Element("matricula").setText(String.valueOf(listaAlumnos.get(i).getMatricula())));
-            alumno.addContent(new Element("nombre").setText(listaAlumnos.get(i).getNombre()));
-            alumno.addContent(new Element("apellido1").setText(listaAlumnos.get(i).getApellido1()));
-            alumno.addContent(new Element("apellido2").setText(listaAlumnos.get(i).getApellido2()));
-            
-//                for (int j = 0; j < listaAlumnos.get(i).getCursos().size(); j++) {
-//                     alumno.addContent(new Element("listacursos").setText(String.valueOf(listaAlumnos.get(i).getCursos().get(j).getId())));
-//                }
-           
+                //Creamos el atributo id para recoger la id del alumno
+                Attribute idalumno = new Attribute("id", String.valueOf(listaAlumnos.get(i).getId()));
+                //añadimos a la "Lista" de alumnos el contenido de cada alumno
+                alumnos.addContent(alumno);
+                //Establecemos el atributo a cada alumno, que se corresponderia con la id
+                alumno.setAttribute(idalumno);
+                //Añadimos los contenidos...
+                alumno.addContent(new Element("matricula").setText(String.valueOf(listaAlumnos.get(i).getMatricula())));
+                alumno.addContent(new Element("nombre").setText(listaAlumnos.get(i).getNombre()));
+                alumno.addContent(new Element("apellido1").setText(listaAlumnos.get(i).getApellido1()));
+                alumno.addContent(new Element("apellido2").setText(listaAlumnos.get(i).getApellido2()));
+
             }
             //Esta es la parte donde se añade(sacarlo del bucle)
             doc.getRootElement().addContent(alumnos);
-            
+
+//---------------------------CURSOS--------------------------
             Element cursos = new Element("Cursos");
-            
+
             for (int i = 0; i < listaCursos.size(); i++) {
                 Element curso = new Element("Curso");
-            Attribute idCurso = new Attribute("id", String.valueOf(listaCursos.get(i).getId()));
-            cursos.addContent(curso);
-            curso.setAttribute(idCurso);
-            curso.addContent(new Element("codCurso").setText(String.valueOf(listaCursos.get(i).getCodCurso())));
-            curso.addContent(new Element("descripcion").setText(listaCursos.get(i).getDescripcion()));
-            
-            
+                Attribute idCurso = new Attribute("id", String.valueOf(listaCursos.get(i).getId()));
+                cursos.addContent(curso);
+                curso.setAttribute(idCurso);
+                curso.addContent(new Element("codCurso").setText(String.valueOf(listaCursos.get(i).getCodCurso())));
+                curso.addContent(new Element("descripcion").setText(listaCursos.get(i).getDescripcion()));
+
             }
-            
+
             //Esta es la parte donde se añade(sacarlo del bucle)
             doc.getRootElement().addContent(cursos);
-            
-            
+
+//---------------------------CURSOSALUMNOS--------------------------
             Element cursosAlumnos = new Element("CursosAlumnos");
-            
+
             for (int i = 0; i < listaCursosAlumnos.size(); i++) {
                 Element cursoAlumno = new Element("cursoAlumno");
-           // Attribute idCursoAlumno = new Attribute("id", String.valueOf(listaCursosAlumnos.get(i).getId()));
-            cursosAlumnos.addContent(cursoAlumno);
-            //cursoAlumno.setAttribute(idCursoAlumno);
-            cursoAlumno.addContent(new Element("idCurso").setText(String.valueOf(listaCursosAlumnos.get(i).getIdCurso())));
-            cursoAlumno.addContent(new Element("idAlumno").setText(String.valueOf(listaCursosAlumnos.get(i).getIdAlumno())));
-            
-            
+                cursosAlumnos.addContent(cursoAlumno);
+                cursoAlumno.addContent(new Element("idCurso").setText(String.valueOf(listaCursosAlumnos.get(i).getIdCurso())));
+                cursoAlumno.addContent(new Element("idAlumno").setText(String.valueOf(listaCursosAlumnos.get(i).getIdAlumno())));
+
             }
-            
+
             //Esta es la parte donde se añade(sacarlo del bucle)
             doc.getRootElement().addContent(cursosAlumnos);
 
-//            Element cursos = new Element("cursos");
-//            Element curso = new Element("curso");
-//            Attribute idCurso = new Attribute("id", "i");
-//            cursos.addContent(curso);
-//            curso.setAttribute(idCurso);
-//            curso.addContent(new Element("codCurso").setText("333"));
-//            curso.addContent(new Element("descripcion").setText("mates"));
-//            curso.addContent(new Element("lista").setText("ninguna"));
-//
-//            doc.getRootElement().addContent(cursos);
-
-            // new XMLOutputter().output(doc, System.out);
             XMLOutputter xmlOutput = new XMLOutputter();
 
-            // display nice nice
+            // Establece el formato 
             xmlOutput.setFormat(Format.getPrettyFormat());
-            xmlOutput.output(doc, new FileWriter("academiaExportado.xml"));
+            //Elige el documento en el que va a guardar la informacion
+            xmlOutput.output(doc, new FileWriter(path));
 
             System.out.println("Archivo Exportado!");
         } catch (IOException ex) {
