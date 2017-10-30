@@ -26,13 +26,12 @@ public class JDOM {
     public List<ArrayList> importarXml(String path) {
         List<ArrayList> listaArrays = new ArrayList<>();
 
-        //Creamos las listas en donde vamos a importar los datos
-        //para pasarselas al metodo que las pida
+        //Creamos las listas en donde vamos a importar los datos para pasarselas al método que las pida.
         ArrayList<Curso> ListaCompletaCursos = new ArrayList();
         ArrayList<Alumno> listaCompletaAlumnos = new ArrayList();
         ArrayList<CursoAlumno> ListaCompletaCursosAlumnos = new ArrayList();
 
-        //Se crea un SAXBuilder para poder parsear el archivo
+        //Se crea un SAXBuilder para poder parsear el archivo.
         SAXBuilder builder = new SAXBuilder();
         File xmlFile = new File(path);
         try {
@@ -40,27 +39,27 @@ public class JDOM {
             Document document = (Document) builder.build(xmlFile);
 
             //---------------------ALUMNOS-------------------
-            //Se obtiene la raiz 'academia'
+            //Se obtiene la raiz 'academia'.
             Element rootNode = document.getRootElement();
-
-            //Se obtiene la lista de hijos de la raiz 'academia'
+            
+            //Se obtiene la lista de hijos de la raiz 'academia'.
             List listaAlumnos = rootNode.getChildren("Alumnos");
 
-            //Se recorre la lista de hijos de 'Alumnos'
+            //Se recorre la lista de hijos de 'Alumnos'.
             for (int i = 0; i < listaAlumnos.size(); i++) {
                 //Se obtiene el elemento 'alumnos'
                 Element alumnos = (Element) listaAlumnos.get(i);
 
-                //Se obtiene la lista de hijos del tag 'alumnos'
+                //Se obtiene la lista de hijos del tag 'alumnos'.
                 List lista_campos = alumnos.getChildren();
 
-                //Se recorre la lista de campos
+                //Se recorre la lista de campos.
                 for (int j = 0; j < lista_campos.size(); j++) {
-                    //Se obtiene el elemento 'alumno'
+                    //Se obtiene el elemento 'alumno'.
                     Element campo = (Element) lista_campos.get(j);
 
-                    //Se obtienen los valores que estan entre los tags '<alumno></alumno>'
-                    //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
+                    //Se obtienen los valores que estan entre los tags '<alumno></alumno>'.
+                    //Se obtiene el valor que esta entre los tags '<nombre></nombre>'.
                     Integer id = Integer.parseInt(campo.getAttributeValue("id"));
                     Integer matricula = Integer.parseInt(campo.getChildTextTrim("matricula"));
                     String nombre = campo.getChildTextTrim("nombre");
@@ -78,28 +77,28 @@ public class JDOM {
                 }
 
             }
-            //------------------Cursos------------------
+            //------------------CURSOS------------------
 
-            //Se obtiene la raiz 'academia'
-            //Se obtiene la lista de hijos de la raiz 'academia'
+            //Se obtiene la raiz 'academia'.
+            //Se obtiene la lista de hijos de la raiz 'academia'.
             List listaCursos = rootNode.getChildren("Cursos");
 
-            //Se recorre la lista de hijos de 'Cursos'
+            //Se recorre la lista de hijos de 'Cursos'.
             for (int i = 0; i < listaCursos.size(); i++) {
-                //Se obtiene el elemento 'Cursos'
+                //Se obtiene el elemento 'Cursos'.
                 Element cursos = (Element) listaCursos.get(i);
 
-                //Se obtiene la lista de hijos del tag 'Cursos'
+                //Se obtiene la lista de hijos del tag 'Cursos'.
                 List lista_camposCursos = cursos.getChildren();
 
-                //Se recorre la lista de cursos
+                //Se recorre la lista de cursos.
                 for (int j = 0; j < lista_camposCursos.size(); j++) {
 
-                    //Se obtiene el elemento 'Curso'
+                    //Se obtiene el elemento 'Curso'.
                     Element campo = (Element) lista_camposCursos.get(j);
 
-                    //Se obtienen los valores que estan entre los tags '<curso></curso>'
-                    //Se obtiene el valor que esta entre los tags '<descripcion></descripcion>'
+                    //Se obtienen los valores que estan entre los tags '<curso></curso>'.
+                    //Se obtiene el valor que esta entre los tags '<descripcion></descripcion>'.
                     Integer id = Integer.parseInt(campo.getAttributeValue("id"));
                     String codCurso = campo.getChildTextTrim("codCurso");
                     String descripcion = campo.getChildTextTrim("descripcion");
@@ -115,27 +114,27 @@ public class JDOM {
 
             }
 
-            //------------------CursosAlumnos------------------
-            //Se obtiene la raiz 'academia'
-            //Se obtiene la lista de hijos de la raiz 'academia'
+            //------------------CURSOSALUMNOS------------------
+            //Se obtiene la raiz 'academia'.
+            //Se obtiene la lista de hijos de la raiz 'academia'.
             List listaCursosAlumnos = rootNode.getChildren("CursosAlumnos");
 
-            //Se recorre la lista de hijos de 'CursosAlumnos'
+            //Se recorre la lista de hijos de 'CursosAlumnos'.
             for (int i = 0; i < listaCursosAlumnos.size(); i++) {
-                //Se obtiene el elemento 'cursoAlumno'
+                //Se obtiene el elemento 'cursoAlumno'.
                 Element cursoAlumno = (Element) listaCursosAlumnos.get(i);
 
-                //Se obtiene la lista de hijos del tag 'CursosAlumnos'
+                //Se obtiene la lista de hijos del tag 'CursosAlumnos'.
                 List lista_camposCursosAlumnos = cursoAlumno.getChildren();
 
-                //Se recorre la lista de campos
+                //Se recorre la lista de campos.
                 for (int j = 0; j < lista_camposCursosAlumnos.size(); j++) {
 
-                    //Se obtiene el elemento 'cursoAlumno'
+                    //Se obtiene el elemento 'cursoAlumno'.
                     Element campo = (Element) lista_camposCursosAlumnos.get(j);
 
-                    //Se obtienen los valores que estan entre los tags '<cursoAlumno></cursoAlumno>'
-                    //Se obtiene el valor que esta entre los tags '<idCurso></idCurso>'
+                    //Se obtienen los valores que estan entre los tags '<cursoAlumno></cursoAlumno>'.
+                    //Se obtiene el valor que esta entre los tags '<idCurso></idCurso>'.
                     String idCurso = campo.getChildTextTrim("idCurso");
                     String idAlumno = campo.getChildTextTrim("idAlumno");
 
@@ -171,24 +170,24 @@ public class JDOM {
 
         try {
 
-            //Creamos el elemento 'academia'
+            //Creamos el elemento 'academia'.
             Element academia = new Element("academia");
             Document doc = new Document(academia);
 
             //doc.setRootElement(academia);
-//---------------------------ALUMNOS--------------------------
-            //Creamos el elemento Alumnos
+            //---------------------------ALUMNOS--------------------------
+            //Creamos el elemento Alumnos.
             Element alumnos = new Element("Alumnos");
 
-            //Recorremos la lista de alumnos y recogemos su atributo
+            //Recorremos la lista de alumnos y recogemos su atributo.
             for (int i = 0; i < listaAlumnos.size(); i++) {
-                //Creamos el elemento alumno
+                //Creamos el elemento alumno.
                 Element alumno = new Element("Alumno");
-                //Creamos el atributo id para recoger la id del alumno
+                //Creamos el atributo id para recoger la id del alumno.
                 Attribute idalumno = new Attribute("id", String.valueOf(listaAlumnos.get(i).getId()));
-                //añadimos a la "Lista" de alumnos el contenido de cada alumno
+                //añadimos a la "Lista" de alumnos el contenido de cada alumno.
                 alumnos.addContent(alumno);
-                //Establecemos el atributo a cada alumno, que se corresponderia con la id
+                //Establecemos el atributo a cada alumno, que se corresponderia con la id.
                 alumno.setAttribute(idalumno);
                 //Añadimos los contenidos...
                 alumno.addContent(new Element("matricula").setText(String.valueOf(listaAlumnos.get(i).getMatricula())));
@@ -197,10 +196,10 @@ public class JDOM {
                 alumno.addContent(new Element("apellido2").setText(listaAlumnos.get(i).getApellido2()));
 
             }
-            //Esta es la parte donde se añade(sacarlo del bucle)
+            //Esta es la parte donde se añade(sacarlo del bucle).
             doc.getRootElement().addContent(alumnos);
 
-//---------------------------CURSOS--------------------------
+            //---------------------------CURSOS--------------------------
             Element cursos = new Element("Cursos");
 
             for (int i = 0; i < listaCursos.size(); i++) {
@@ -213,10 +212,10 @@ public class JDOM {
 
             }
 
-            //Esta es la parte donde se añade(sacarlo del bucle)
+            //Esta es la parte donde se añade(sacarlo del bucle).
             doc.getRootElement().addContent(cursos);
 
-//---------------------------CURSOSALUMNOS--------------------------
+            //---------------------------CURSOSALUMNOS--------------------------
             Element cursosAlumnos = new Element("CursosAlumnos");
 
             for (int i = 0; i < listaCursosAlumnos.size(); i++) {
@@ -227,14 +226,15 @@ public class JDOM {
 
             }
 
-            //Esta es la parte donde se añade(sacarlo del bucle)
+            
+            //Esta es la parte donde se añade(sacarlo del bucle).
             doc.getRootElement().addContent(cursosAlumnos);
 
             XMLOutputter xmlOutput = new XMLOutputter();
 
-            // Establece el formato 
+            //Establece el formato .
             xmlOutput.setFormat(Format.getPrettyFormat());
-            //Elige el documento en el que va a guardar la informacion
+            //Elige el documento en el que va a guardar la información.
             xmlOutput.output(doc, new FileWriter(path));
 
             System.out.println("Archivo Exportado!");

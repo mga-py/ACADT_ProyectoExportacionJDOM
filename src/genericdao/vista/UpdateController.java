@@ -1,4 +1,4 @@
-package genericdao.vistajesus;
+package genericdao.vista;
 
 import acadt_proyectoexportjdom.ACADT_ProyectoExportJDOM;
 import genericdao.modelo.dao.AlumnosDao;
@@ -23,7 +23,7 @@ public class UpdateController implements Initializable, IControlPantallas {
     private ACADT_ProyectoExportJDOM menuVentanas;
     private AlumnosDao alumnoDao;
     private CursosDao cursoDao;
-    
+
     @FXML
     private TextField tfMatricula;
     @FXML
@@ -60,9 +60,6 @@ public class UpdateController implements Initializable, IControlPantallas {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Menú actualizar cargado.");
-        tfCurso.setVisible(false);
-        tfCodigoCurso.setVisible(false);
-        tfDescripcionCurso.setVisible(false);
 
     }
 
@@ -73,15 +70,42 @@ public class UpdateController implements Initializable, IControlPantallas {
 
     @FXML
     private void updateAlumno(ActionEvent event) {
+        Alumno alumno=new Alumno();
+        //alumno.setId(Integer.valueOf(tfFiltro.getText()));
+        alumno.setMatricula(Integer.valueOf(tfMatricula.getText()));
+        alumno.setNombre(tfNombre.getText());
+        alumno.setApellido1(tfApellido01.getText());
+        alumno.setApellido2(tfApellido02.getText());
+        alumnoDao.update(alumno);
+        
+        tfNombre.clear();
+        tfMatricula.clear();
+        tfApellido01.clear();
+        tfApellido02.clear();
+        tfCodigoCurso.clear();
+        tfFiltro.clear();
+        
+        //System.out.println(alumno);
     }
 
     @FXML
     private void updateCourse(ActionEvent event) {
+        Curso curso=new Curso();
+        //curso.setId(Integer.parseInt(tfFiltro.getText()));
+        curso.setCodCurso(tfCodigoCurso.getText());
+        curso.setDescripcion(tfDescripcionCurso.getText());
+        cursoDao.update(curso);
+        
+        tfCodigoCurso.clear();
+        tfDescripcionCurso.clear();
+        tfFiltroCurso.clear();
+        
+        //System.out.println(curso);
     }
 
     @FXML
     private void back(ActionEvent event) {
-        menuVentanas.cambiarContenido("/genericdao/vistajesus/List.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vista/List.fxml");
     }
 
     @FXML
@@ -91,14 +115,14 @@ public class UpdateController implements Initializable, IControlPantallas {
         alumno.setMatricula(Integer.valueOf(tfFiltro.getText()));
         if (alumnoDao.exist(alumno)) {
             System.out.println("EXISTE");
-            tfMatricula.setVisible(true);
-            tfNombre.setVisible(true);
-            tfApellido01.setVisible(true);
-            tfApellido02.setVisible(true);
-            lbMatricula.setVisible(true);
-            lbNombre.setVisible(true);
-            lbApellido1.setVisible(true);
-            lbApellido2.setVisible(true);
+            //Asignamos campos de alumno para modificar
+            alumno = alumnoDao.get(Integer.valueOf(tfFiltro.getText()));
+            tfMatricula.setText(String.valueOf(alumno.getMatricula()));
+            tfCurso.setText("");
+            tfNombre.setText(alumno.getNombre());
+            tfApellido01.setText(alumno.getApellido1());
+            tfApellido02.setText(alumno.getApellido2());
+            
         } else {
             System.out.println("NO EXISTE");
         }
@@ -108,16 +132,16 @@ public class UpdateController implements Initializable, IControlPantallas {
     @FXML
     private void findCourse(ActionEvent event) {
         cursoDao = new CursosDao();
-        Curso curso= new Curso();
-        curso.setCodCurso(tfFiltroCurso.getText());
-        if(cursoDao.exist(curso)){
+        Curso cursoTemp = new Curso();
+        cursoTemp.setCodCurso(tfFiltroCurso.getText());
+        if (cursoDao.exist(cursoTemp)) {
             System.out.println("EXISTE");
-            tfCodigoCurso.setVisible(true);
-            tfDescripcionCurso.setVisible(true);
-            lbCodigoCurso.setVisible(true);
-            lbDescripcion.setVisible(true);
-        }
-        else{
+            //Asignamos campos de curso para modificar
+            cursoTemp = cursoDao.get(cursoTemp);
+            tfCodigoCurso.setText(cursoTemp.getCodCurso());
+            tfDescripcionCurso.setText(cursoTemp.getDescripcion());
+            
+        } else {
             System.out.println("NO EXISTE");
         }
     }

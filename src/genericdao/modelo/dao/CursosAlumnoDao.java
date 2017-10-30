@@ -264,12 +264,13 @@ public class CursosAlumnoDao extends GenericDao<CursoAlumno, Integer> {
         Alumno alumno;
         error = false;
         String sql = "SELECT "
-                + "al.id, al.matricula,  "
+                + "al.id, al.matricula, "
                 + "al.nombre, al.apellido1, al.apellido2 "
                 + "FROM cursos_alumno cu "
                 + "LEFT JOIN alumnos al ON cu.idAlumno=al.id "
                 + "WHERE cu.idCurso=? "
                 + "ORDER BY al.apellido1, al.apellido2, al.nombre";
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idCurso);
@@ -317,5 +318,6 @@ public class CursosAlumnoDao extends GenericDao<CursoAlumno, Integer> {
         }
         return cursos;
     }
+    
 
 }
