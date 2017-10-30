@@ -1,71 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <academia>
-  <Alumnos>
-    <Alumno id="1">
-      <matricula>1</matricula>
-      <nombre>Juan</nombre>
-      <apellido1>perez</apellido1>
-      <apellido2>perera</apellido2>
-    </Alumno>
-    <Alumno id="2">
-      <matricula>2</matricula>
-      <nombre>psp</nombre>
-      <apellido1>nintendo</apellido1>
-      <apellido2>ps2</apellido2>
-    </Alumno>
-    <Alumno id="3">
-      <matricula>3</matricula>
-      <nombre>ramonam</nombre>
-      <apellido1>amancio</apellido1>
-      <apellido2>ortega</apellido2>
-    </Alumno>
-  </Alumnos>
-  <Cursos>
-    <Curso id="2">
-      <codCurso>informatica</codCurso>
-      <descripcion>sasa</descripcion>
-    </Curso>
-    <Curso id="3">
-      <codCurso>lengua primero</codCurso>
-      <descripcion>pastel</descripcion>
-    </Curso>
-    <Curso id="4">
-      <codCurso>lengua segundo</codCurso>
-      <descripcion>oral</descripcion>
-    </Curso>
-    <Curso id="1">
-      <codCurso>mates</codCurso>
-      <descripcion>mama</descripcion>
-    </Curso>
-  </Cursos>
-  <CursosAlumnos>
-    <cursoAlumno>
-      <idCurso>1</idCurso>
-      <idAlumno>2</idAlumno>
-    </cursoAlumno>
-    <cursoAlumno>
-      <idCurso>1</idCurso>
-      <idAlumno>3</idAlumno>
-    </cursoAlumno>
-    <cursoAlumno>
-      <idCurso>2</idCurso>
-      <idAlumno>2</idAlumno>
-    </cursoAlumno>
-    <cursoAlumno>
-      <idCurso>3</idCurso>
-      <idAlumno>1</idAlumno>
-    </cursoAlumno>
-    <cursoAlumno>
-      <idCurso>3</idCurso>
-      <idAlumno>2</idAlumno>
-    </cursoAlumno>
-    <cursoAlumno>
-      <idCurso>4</idCurso>
-      <idAlumno>1</idAlumno>
-    </cursoAlumno>
-    <cursoAlumno>
-      <idCurso>4</idCurso>
-      <idAlumno>2</idAlumno>
-    </cursoAlumno>
-  </CursosAlumnos>
+    <Alumnos>
+        <Alumno id="1">
+            <matricula>1</matricula>
+            <nombre>Carlos</nombre>
+            <apellido1>De La Rosa</apellido1>
+            <apellido2>García</apellido2>
+        </Alumno>
+        <Alumno id="2">
+            <matricula>2</matricula>
+            <nombre>Baltasar</nombre>
+            <apellido1>Rangel</apellido1>
+            <apellido2>Pinilla</apellido2>
+        </Alumno>
+        <Alumno id="3">
+            <matricula>3</matricula>
+            <nombre>Jesús</nombre>
+            <apellido1>González</apellido1>
+            <apellido2>Merín</apellido2>
+        </Alumno>
+        <Alumno id="4">
+            <matricula>4</matricula>
+            <nombre>Luis Manuel</nombre>
+            <apellido1>Becerra</apellido1>
+            <apellido2>Álvarez</apellido2>
+        </Alumno>
+        <Alumno id="5">
+            <matricula>5</matricula>
+            <nombre>Paco</nombre>
+            <apellido1>Pérez</apellido1>
+            <apellido2>Pérez</apellido2>
+        </Alumno>
+    </Alumnos>
+    <Cursos>
+        <Curso id="1">
+            <codCurso>DAM1</codCurso>
+            <descripcion>Desarrollo de Aplicaciones Multiplataforma</descripcion>
+        </Curso>
+        <Curso id="2">
+            <codCurso>DAM2</codCurso>
+            <descripcion>Desarrollo de Aplicaciones Multiplataforma</descripcion>
+        </Curso>
+        <Curso id="3">
+            <codCurso>SMR1</codCurso>
+            <descripcion>Sistemas Microinformáticos y Redes</descripcion>
+        </Curso>
+        <Curso id="4">
+            <codCurso>SMR2</codCurso>
+            <descripcion>Sistemas Microinformáticos y Redes</descripcion>
+        </Curso>
+    </Cursos>
+    <CursosAlumnos>
+        <cursoAlumno>
+            <idCurso>1</idCurso>
+            <idAlumno>2</idAlumno>
+        </cursoAlumno>
+        <cursoAlumno>
+            <idCurso>1</idCurso>
+            <idAlumno>3</idAlumno>
+        </cursoAlumno>
+        <cursoAlumno>
+            <idCurso>2</idCurso>
+            <idAlumno>2</idAlumno>
+        </cursoAlumno>
+        <cursoAlumno>
+            <idCurso>3</idCurso>
+            <idAlumno>1</idAlumno>
+        </cursoAlumno>
+        <cursoAlumno>
+            <idCurso>3</idCurso>
+            <idAlumno>2</idAlumno>
+        </cursoAlumno>
+        <cursoAlumno>
+            <idCurso>4</idCurso>
+            <idAlumno>1</idAlumno>
+        </cursoAlumno>
+        <cursoAlumno>
+            <idCurso>4</idCurso>
+            <idAlumno>2</idAlumno>
+        </cursoAlumno>
+    </CursosAlumnos>
 </academia>

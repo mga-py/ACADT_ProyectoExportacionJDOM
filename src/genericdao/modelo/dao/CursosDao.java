@@ -165,7 +165,7 @@ public class CursosDao extends GenericDao<Curso, Integer> {
     public boolean update(Curso entity) {
         boolean correcto = true;
         String sql = "UPDATE cursos SET "
-                + "codCurso=?, descripcion=?) "
+                + "codCurso=?, descripcion=? "
                 + "WHERE id=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -303,7 +303,7 @@ public class CursosDao extends GenericDao<Curso, Integer> {
         boolean encontrado = false;
         String sql = "SELECT "
                 + "id "
-                + "FROM cursos WHERE codCurso =  " + entity.getCodCurso();
+                + "FROM cursos WHERE codCurso =  '" + entity.getCodCurso()+"'";
         try {
             ResultSet rs = stmt.executeQuery(sql);
             encontrado = rs.next();

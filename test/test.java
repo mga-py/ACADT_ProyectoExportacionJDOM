@@ -1,23 +1,25 @@
 
+import genericdao.modelo.dao.AlumnosDao;
+import genericdao.modelo.dao.CursosAlumnoDao;
+import genericdao.modelo.dao.CursosDao;
 import genericdao.modelo.exportacionJDOM.JDOM;
 
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Baltasar Rangel Pinilla  <mga-py>----<baltasarrangel93@gmail.com">
- */
 public class test {
-      public static void main(String[] args) {
-        JDOM jdom =new JDOM();
-        //jdom.importarXml();
-        jdom.exportarXml();
+
+    public static void main(String[] args) {
+        //Instanciamos la clase JDOM.
+        JDOM jdom = new JDOM();
+
+        //Probamos a importar un archivo XML, creado previamente.
+        jdom.importarXml("academiaExportado.xml");
+        AlumnosDao alumnoDao = new AlumnosDao();
+        alumnoDao.add(jdom.importarXml("academiaExportado.xml").get(2));
+        CursosDao cursoDao = new CursosDao();
+        cursoDao.add(jdom.importarXml("academiaExportado.xml").get(0));
+        CursosAlumnoDao cursoAlumnoDao = new CursosAlumnoDao();
+        cursoAlumnoDao.add(jdom.importarXml("academiaExportado.xml").get(1));
+
+        //Probamos a exportar un archivo XML.
+        //jdom.exportarXml("academiaExportado02.xml");
     }
 }

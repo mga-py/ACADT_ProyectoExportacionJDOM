@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="601.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genericdao.vistajesus.ListController">
+<AnchorPane id="AnchorPane" prefHeight="601.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genericdao.vista.ListController">
    <children>
       <TabPane layoutY="14.0" prefHeight="591.0" prefWidth="929.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -14,7 +15,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tvAlumnos" layoutX="72.0" layoutY="63.0" prefHeight="436.0" prefWidth="786.0">
+                        <TableView fx:id="tvAlumnos" layoutX="72.0" layoutY="63.0" prefHeight="436.0" prefWidth="786.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="63.0">
                           <columns>
                             <TableColumn fx:id="tcMatricula" prefWidth="189.0" text="matricula" />
                             <TableColumn fx:id="tcNombre" prefWidth="168.0" text="nombre" />
@@ -22,6 +23,7 @@
                               <TableColumn fx:id="tcApellido02" prefWidth="221.0" text="apellido02" />
                           </columns>
                         </TableView>
+                        <ComboBox fx:id="cbAlumnosCurso" layoutX="72.0" layoutY="21.0" onAction="#comprobarPulsado" prefHeight="25.0" prefWidth="210.0" />
                      </children></AnchorPane>
             </content>
           </Tab>

@@ -1,11 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package genericdao.vistajesus;
+package genericdao.vista;
 
 import acadt_proyectoexportjdom.ACADT_ProyectoExportJDOM;
+import genericdao.modelo.dao.AlumnosDao;
+import genericdao.modelo.dao.CursosAlumnoDao;
+import genericdao.modelo.dao.CursosDao;
+import genericdao.modelo.exportacionJDOM.JDOM;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,10 +14,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
-/**
- *
- * @author Jesús González <jesusgonzalezmerin@gmail.com>
- */
 public class PrincipalController implements Initializable, IControlPantallas {
 
     //Atributos
@@ -38,6 +33,12 @@ public class PrincipalController implements Initializable, IControlPantallas {
     private MenuItem miUpdate;
     @FXML
     private MenuItem miList;
+    @FXML
+    private Menu mArchivo;
+    @FXML
+    private MenuItem miExport;
+    @FXML
+    private MenuItem miImport;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,22 +52,22 @@ public class PrincipalController implements Initializable, IControlPantallas {
 
     @FXML
     private void add(ActionEvent event) {
-        menuVentanas.cambiarContenido("/genericdao/vistajesus/Add.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vista/Add.fxml");
     }
 
     @FXML
     private void delete(ActionEvent event) {
-        menuVentanas.cambiarContenido("/genericdao/vistajesus/Delete.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vista/Delete.fxml");
     }
 
     @FXML
     private void update(ActionEvent event) {
-        menuVentanas.cambiarContenido("/genericdao/vistajesus/Update.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vista/Update.fxml");
     }
 
     @FXML
     private void list(ActionEvent event) {
-        menuVentanas.cambiarContenido("/genericdao/vistajesus/List.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vista/List.fxml");
     }
 
     @FXML
@@ -78,6 +79,26 @@ public class PrincipalController implements Initializable, IControlPantallas {
         alertaAutor.showAndWait();
     }
 
+    @FXML
+    private void exportXML(ActionEvent event) {
+        //Instanciamos la clase JDOM.
+        JDOM jdom = new JDOM();
+        jdom.exportarXml("XMLExportado.xml");
+    }
 
+    @FXML
+    private void importXML(ActionEvent event) {
+        //Instanciamos la clase JDOM.
+        JDOM jdom = new JDOM();
+
+        //Probamos a importar un archivo XML, creado previamente.
+        jdom.importarXml("academiaExportado.xml");
+        AlumnosDao alumnoDao = new AlumnosDao();
+        alumnoDao.add(jdom.importarXml("academiaExportado.xml").get(2));
+        CursosDao cursoDao = new CursosDao();
+        cursoDao.add(jdom.importarXml("academiaExportado.xml").get(0));
+        CursosAlumnoDao cursoAlumnoDao = new CursosAlumnoDao();
+        cursoAlumnoDao.add(jdom.importarXml("academiaExportado.xml").get(1));
+    }
 
 }
