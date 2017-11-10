@@ -186,7 +186,7 @@ public class AlumnosDao extends GenericDao<Alumno, Integer> {
     public boolean update(Alumno entity) {
         boolean correcto = true;
         String sql = "UPDATE alumnos SET "
-                + "matricula=?, nombre=?, apellido1=?, apellido2=?) "
+                + "matricula=?, nombre=?, apellido1=?, apellido2=? "
                 + "WHERE id=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

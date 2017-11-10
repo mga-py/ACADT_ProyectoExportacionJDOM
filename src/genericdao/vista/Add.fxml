@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="menuAdd" prefHeight="601.0" prefWidth="921.0" stylesheets="@../estilos/bootstrap2.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genericdao.vista.AddController">
+   <children>
+      <TabPane layoutY="10.0" prefHeight="591.0" prefWidth="921.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+        <tabs>
+          <Tab text="Alumno">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="895.0">
+                     <children>
+                        <TextField fx:id="tfMatricula" layoutX="94.0" layoutY="100.0" AnchorPane.topAnchor="100.0" />
+                        <TextField fx:id="tfNombre" layoutX="94.0" layoutY="310.0" AnchorPane.topAnchor="310.0" />
+                        <TextField fx:id="tfApellido01" layoutX="275.0" layoutY="310.0" AnchorPane.topAnchor="310.0" />
+                        <TextField fx:id="tfApellido02" layoutX="457.0" layoutY="310.0" AnchorPane.topAnchor="310.0" />
+                        <TextField fx:id="tfCurso" layoutX="94.0" layoutY="207.0" AnchorPane.topAnchor="207.0" />
+                        <Button fx:id="btAddUser" layoutX="782.0" layoutY="14.0" mnemonicParsing="false" onAction="#addAlumno" prefHeight="25.0" prefWidth="117.0" styleClass="success" stylesheets="@../estilos/bootstrap2.css" text="Añadir" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="14.0" />
+                        <Button fx:id="btBackUser" layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="117.0" text="Atrás" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="14.0" />
+                        <Label layoutX="94.0" layoutY="74.0" text="Matricula" />
+                        <Label layoutX="94.0" layoutY="286.0" text="Nombre" />
+                        <Label layoutX="275.0" layoutY="286.0" text="Apellido 01" />
+                        <Label layoutX="459.0" layoutY="286.0" text="Apellido 02" />
+                        <Label layoutX="96.0" layoutY="180.0" text="ID Curso" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Curso">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfCodigoCurso" layoutX="53.0" layoutY="119.0" />
+                        <Label layoutX="52.0" layoutY="88.0" text="Código curso" />
+                        <Label layoutX="56.0" layoutY="187.0" text="Descripción" />
+                        <Button fx:id="btAddCourse" layoutX="782.0" layoutY="14.0" mnemonicParsing="false" onAction="#addCourse" prefHeight="25.0" prefWidth="117.0" styleClass="success" text="Añadir" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="14.0" />
+                        <Button fx:id="btBackCourse" layoutX="36.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="117.0" text="Atrás" />
+                        <TextArea fx:id="tfDescripcionCurso" layoutX="53.0" layoutY="222.0" prefHeight="257.0" prefWidth="645.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="222.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

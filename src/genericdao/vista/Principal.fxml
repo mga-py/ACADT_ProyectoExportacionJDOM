@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="918.0" stylesheets="@../estilos/bootstrap2.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genericdao.vista.PrincipalController">
+   <top>
+      <MenuBar stylesheets="@../estilos/bootstrap2.css" BorderPane.alignment="CENTER">
+        <menus>
+            <Menu fx:id="mArchivo" mnemonicParsing="false" text="Archivo">
+              <items>
+                <MenuItem fx:id="miExport" mnemonicParsing="false" onAction="#exportXML" text="Exportar..">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="miImport" mnemonicParsing="false" onAction="#importXML" text="Importar..">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+              </items>
+            </Menu>
+            <Menu fx:id="mOpciones" mnemonicParsing="false" text="Opciones">
+              <items>
+                <MenuItem fx:id="miAdd" mnemonicParsing="false" onAction="#add" text="Añadir">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="miUpdate" mnemonicParsing="false" onAction="#update" text="Actualizar">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="miList" mnemonicParsing="false" onAction="#list" text="Listar">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+              </items>
+            </Menu>
+            <Menu fx:id="mAcerca" mnemonicParsing="false" text="Acerca">
+              <items>
+                <MenuItem fx:id="miInformacion" mnemonicParsing="false" onAction="#aboutUser" text="Información">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="F1" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

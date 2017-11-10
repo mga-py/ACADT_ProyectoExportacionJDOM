@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="896.0" stylesheets="@../estilos/bootstrap2.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genericdao.vista.UpdateController">
+   <children>
+      <TabPane layoutY="14.0" prefHeight="591.0" prefWidth="921.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+        <tabs>
+          <Tab text="Alumno">
+            <content>
+              <AnchorPane prefHeight="575.0" prefWidth="884.0">
+                     <children>
+                        <TextField fx:id="tfMatricula" layoutX="99.0" layoutY="73.0" AnchorPane.topAnchor="73.0" />
+                        <TextField fx:id="tfNombre" layoutX="99.0" layoutY="155.0" AnchorPane.topAnchor="155.0" />
+                        <TextField fx:id="tfApellido01" layoutX="280.0" layoutY="155.0" AnchorPane.topAnchor="155.0" />
+                        <TextField fx:id="tfApellido02" layoutX="457.0" layoutY="155.0" AnchorPane.topAnchor="155.0" />
+                        <Label fx:id="lbMatricula" layoutX="99.0" layoutY="47.0" text="Matricula" AnchorPane.topAnchor="47.0" />
+                        <Label fx:id="lbNombre" layoutX="99.0" layoutY="130.0" text="Nombre" AnchorPane.topAnchor="130.0" />
+                        <Label fx:id="lbApellido1" layoutX="280.0" layoutY="131.0" text="Apellido 01" AnchorPane.topAnchor="131.0" />
+                        <Label fx:id="lbApellido2" layoutX="459.0" layoutY="131.0" text="Apellido 02" AnchorPane.topAnchor="131.0" />
+                        <Label fx:id="lbIdCurso" layoutX="101.0" layoutY="187.0" text="Codigo Curso" AnchorPane.topAnchor="187.0" />
+                        <Button layoutX="34.0" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="117.0" text="Atrás" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="8.0" />
+                        <Button layoutX="765.0" layoutY="8.0" mnemonicParsing="false" onAction="#updateAlumno" prefHeight="25.0" prefWidth="117.0" styleClass="success" text="Actualizar" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0" />
+                        <TextField fx:id="tfFiltro" layoutX="345.0" layoutY="32.0" promptText="Insertar ID Matricula" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="378.0" />
+                        <Button layoutX="518.0" layoutY="32.0" mnemonicParsing="false" onAction="#findAlumno" prefHeight="25.0" prefWidth="81.0" styleClass="info" text="Buscar" AnchorPane.rightAnchor="297.0" />
+                        <ComboBox fx:id="cbCodigoCurso" layoutX="99.0" layoutY="203.0" prefWidth="150.0" AnchorPane.topAnchor="203.0" />
+                        <TableView fx:id="tvCursosInsertados" layoutX="99.0" layoutY="240.0" prefHeight="183.0" prefWidth="745.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="240.0">
+                          <columns>
+                            <TableColumn fx:id="tcCodCurso" prefWidth="151.0" text="Codigo Curso" />
+                            <TableColumn fx:id="tcDescripcion" prefWidth="593.0" text="Descripcion" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btInsertarCurso" layoutX="270.0" layoutY="203.0" mnemonicParsing="false" onAction="#insertarCursos" styleClass="warning" text="Insertar Curso" AnchorPane.topAnchor="203.0" />
+                        <Button fx:id="btBorrarCurso" layoutX="734.0" layoutY="203.0" mnemonicParsing="false" onAction="#borrarCurso" styleClass="danger" text="Borrar Curso" AnchorPane.rightAnchor="51.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Curso">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfCodigoCurso" layoutX="52.0" layoutY="119.0" />
+                        <TextField fx:id="tfDescripcionCurso" alignment="TOP_LEFT" layoutX="56.0" layoutY="230.0" prefHeight="173.0" prefWidth="557.0" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="230.0" />
+                        <Label fx:id="lbCodigoCurso" layoutX="52.0" layoutY="88.0" text="Código curso" />
+                        <Label fx:id="lbDescripcion" layoutX="56.0" layoutY="187.0" text="Descripción" />
+                        <Button layoutX="613.0" layoutY="456.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="117.0" text="Atrás" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="166.0" />
+                        <Button layoutX="765.0" layoutY="456.0" mnemonicParsing="false" onAction="#updateCourse" prefHeight="25.0" prefWidth="117.0" styleClass="success" text="Actualizar" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="14.0" />
+                        <TextField fx:id="tfFiltroCurso" layoutX="633.0" layoutY="39.0" promptText="Insertar Codigo Curso" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="39.0" />
+                        <Button layoutX="803.0" layoutY="39.0" mnemonicParsing="false" onAction="#findCourse" prefHeight="25.0" prefWidth="81.0" styleClass="info" text="Buscar" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="39.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

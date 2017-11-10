@@ -1,4 +1,4 @@
-package genericdao.vistajesus;
+package genericdao.vista;
 
 import acadt_proyectoexportjdom.ACADT_ProyectoExportJDOM;
 import java.net.URL;

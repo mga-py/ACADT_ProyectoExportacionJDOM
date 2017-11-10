@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="601.0" prefWidth="921.0" stylesheets="@../estilos/bootstrap2.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genericdao.vista.PortadaController">
+   <children>
+      <AnchorPane prefHeight="601.0" prefWidth="921.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="587.0" fitWidth="917.0" layoutX="2.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.8521728515625" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="34.0">
+               <image>
+                  <Image url="@FONDO%20FINAL.png" />
+               </image>
+            </ImageView>
+            <ProgressIndicator layoutX="671.0" layoutY="121.0" prefHeight="106.0" prefWidth="223.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

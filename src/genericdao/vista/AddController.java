@@ -1,4 +1,4 @@
-package genericdao.vistajesus;
+package genericdao.vista;
 
 import acadt_proyectoexportjdom.ACADT_ProyectoExportJDOM;
 import genericdao.modelo.dao.AlumnosDao;
@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -38,7 +39,7 @@ public class AddController implements Initializable, IControlPantallas {
     @FXML
     private TextField tfCodigoCurso;
     @FXML
-    private TextField tfDescripcionCurso;
+    private TextArea tfDescripcionCurso;
     @FXML
     private Button btAddUser;
     @FXML
@@ -85,7 +86,7 @@ public class AddController implements Initializable, IControlPantallas {
 
     @FXML
     private void back(ActionEvent event) {
-        menuVentanas.cambiarContenido("/genericdao/vistajesus/List.fxml");
+        menuVentanas.cambiarContenido("/genericdao/vista/List.fxml");
 
     }
 
